@@ -15,7 +15,7 @@ Choose any sync module from `npm` and instead of `require` use `threadIt`.
 
 ### threadIt(name[, options])
 
-Under the hood `threadId` uses [holdUp](https://github.com/coderaiser/hold-up) so you can use the same options to find a free worker from que.
+Under the hood `threadId` uses [holdUp](https://github.com/coderaiser/hold-up) so you can use the same options to find a free worker from queue.
 
 - `name` - string
 - `options` - options may contain:
