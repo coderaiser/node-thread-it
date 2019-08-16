@@ -70,3 +70,20 @@ test('thread-it: no worker_threads', async (t) => {
     t.end();
 });
 
+test('thread-it: no worker_threads', async (t) => {
+    process.env.THREAD_IT_COUNT = '0';
+    
+    const threadIt = reRequire('..');
+    
+    threadIt.init();
+    const putout = threadIt('putout');
+    const result = await putout('const t = 5');
+    
+    threadIt.terminate();
+    stopAll();
+    delete process.env.THREAD_IT_COUNT;
+    
+    t.deepEqual(result.places, []);
+    t.end();
+});
+

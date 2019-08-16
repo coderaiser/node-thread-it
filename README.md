@@ -23,6 +23,7 @@ Under the hood `threadId` uses [holdUp](https://github.com/coderaiser/hold-up) s
   - `count`
   - `time`
 
+Also you can set `THREAD_IT_COUNT` env variable to workers count, if `0` it means disabled worker threads.
 ```js
 const threadIt = require('thread-it');
 
