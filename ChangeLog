@@ -1,3 +1,9 @@
+2019.08.16, v1.0.2
+
+fix:
+- (package) try-to-catch: dependencies -> devDependencies
+
+
 2019.08.16, v1.0.1
 
 fix:
