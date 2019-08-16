@@ -30,7 +30,7 @@ const threadIt = require('thread-it');
 threadIt.init();
 
 const putout = threadIt('putout');
-const result = await threadIt(`const t = 'hello'`);
+const result = await putout(`const t = 'hello'`);
 
 // when you need to override options use
 threadIt('putout', {
