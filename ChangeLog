@@ -1,0 +1,5 @@
+2019.08.16, v1.0.1
+
+fix:
+- (package) webworker -> thread worker
+
