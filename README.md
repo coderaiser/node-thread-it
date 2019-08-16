@@ -25,10 +25,10 @@ Under the hood `threadId` uses [holdUp](https://github.com/coderaiser/hold-up) s
 
 ```js
 const threadIt = require('thread-it');
-const putout = threadIt('putout');
 
 // init workers, depend on os.cpus()
 threadIt.init();
+const putout = threadIt('putout');
 
 const result = await threadIt(`const t = 'hello'`);
 
