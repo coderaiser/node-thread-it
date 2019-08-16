@@ -9,6 +9,11 @@
     "type": "git",
     "url": "git://github.com/iocmd/thread-it.git"
   },
+  "nyc": {
+    "exclude": [
+      "madrun.js"
+    ]
+  },
   "keywords": [
     "worker",
     "threads",
