@@ -7,7 +7,7 @@
   "main": "lib/thread-it.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/iocmd/thread-it.git"
+    "url": "git://github.com/coderaiser/node-thread-it.git"
   },
   "nyc": {
     "exclude": [
