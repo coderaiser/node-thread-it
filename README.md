@@ -54,14 +54,14 @@ threadIt.terminate();
 
 MIT
 
-[NPMIMGURL]:                https://img.shields.io/npm/v/@coderaiser/thread-it.svg?style=flat
-[BuildStatusIMGURL]:        https://travis-ci.com/coderaiser/thread-it.svg?branch=master
-[DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/thread-it.svg?style=flat
+[NPMIMGURL]:                https://img.shields.io/npm/v/thread-it.svg?style=flat
+[BuildStatusIMGURL]:        https://travis-ci.com/coderaiser/node-thread-it.svg?branch=master
+[DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/node-thread-it.svg?style=flat
 [LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPMURL]:                   https://npmjs.org/package/@coderaiser/thread-it "npm"
-[BuildStatusURL]:           https://travis-ci.com/coderaiser/thread-it  "Build Status"
-[DependencyStatusURL]:      https://david-dm.org/coderaiser/thread-it "Dependency Status"
+[NPMURL]:                   https://npmjs.org/package/thread-it "npm"
+[BuildStatusURL]:           https://travis-ci.com/coderaiser/node-thread-it  "Build Status"
+[DependencyStatusURL]:      https://david-dm.org/coderaiser/node-thread-it "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
 
-[CoverageURL]:              https://coveralls.io/github/coderaiser/thread-it?branch=master
-[CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/thread-it/badge.svg?branch=master&service=github
+[CoverageURL]:              https://coveralls.io/github/coderaiser/node-thread-it?branch=master
+[CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/node-thread-it/badge.svg?branch=master&service=github
