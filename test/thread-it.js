@@ -42,7 +42,8 @@ test('thread-it: memory leak', async (t) => {
 });
 
 test('thread-it', async (t) => {
-    const [e] = tryCatch(threadIt, 'putout');
+    const putout = threadIt('putout');
+    const [e] = await tryToCatch(putout, `const t = 'hello'`);
     
     t.equal(e.message, `You should init workers first!`);
     t.end();
