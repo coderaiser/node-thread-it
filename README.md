@@ -37,7 +37,7 @@ const result = await putout(`const t = 'hello'`);
 threadIt('putout', {
     count: 5,       // default
     time: 1000,     // default
-    log: () => {},  //default
+    log: () => {},  // default
 });
 
 // terminate workers when no need anymore
