@@ -87,3 +87,29 @@ test('thread-it: no worker_threads', async (t) => {
     t.end();
 });
 
+test('thread-it: a couple: correct order', async (t) => {
+    threadIt.init();
+    
+    const putout1 = threadIt('putout');
+    const putout2 = threadIt('putout');
+    
+    const code = 'const t = 5';
+    await Promise.all([
+        putout1(code),
+        putout1(code),
+        putout1(code),
+    ]);
+    
+    const result1 = await putout1(code);
+    const result2 = await putout2(code, {
+        plugins: [
+            'remove-unused-variables',
+        ],
+    });
+    
+    threadIt.terminate();
+    
+    t.deepEqual(result1.code, code);
+    t.deepEqual(result2.code, '');
+    t.end();
+});
