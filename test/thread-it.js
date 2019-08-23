@@ -37,7 +37,7 @@ test('thread-it: memory leak', async (t) => {
     const [e] = tryCatch(threadIt.init);
     threadIt.terminate();
     
-    t.equal(e.message, `Terminate existing workers first!`);
+    t.notOk(e, `run init as many times as you wish, if works exists init does nothing`);
     t.end();
 });
 
