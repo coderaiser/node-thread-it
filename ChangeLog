@@ -1,3 +1,9 @@
+2019.08.23, v1.1.2
+
+fix:
+- (thread-it) free worker handling
+
+
 2019.08.23, v1.1.1
 
 fix:
