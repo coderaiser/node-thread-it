@@ -5,7 +5,7 @@ wraps your code with a promise so you don't have to warry about a thing, just us
 
 Choose any sync module from `npm` and instead of `require` use `threadIt`.
 
-*Caution: not all data types can be passed to Worker Thread, for example you can't just pass a function, [read carefully types support](https://nodejs.org/dist/latest-v12.x/docs/api/worker_threads.html#worker_threads_port_postmessage_value_transferlist)*
+*Caution: not all data types can be passed to Worker Thread, for example you just can't pass a function, read carefully [what types are supported](https://nodejs.org/dist/latest-v12.x/docs/api/worker_threads.html#worker_threads_port_postmessage_value_transferlist).*
 
 ## Install
 
