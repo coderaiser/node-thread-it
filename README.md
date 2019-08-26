@@ -1,4 +1,4 @@
-# Thread It[![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
+# Thread It [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
 Drastically simplified [worker threads](https://nodejs.org/dist/latest-v12.x/docs/api/worker_threads.html), on node `v8` or `v10` without `--experimental-worker` just
 wraps your code with a promise so you don't have to warry about a thing, just use `thread it` and it will use `workers` where can.
