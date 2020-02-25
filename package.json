@@ -48,7 +48,7 @@
     "madrun": "^2.5.0",
     "mock-require": "^3.0.3",
     "nodemon": "^1.11.0",
-    "nyc": "^14.1.1",
+    "nyc": "^15.0.0",
     "putout": "^5.5.0",
     "redrun": "^7.0.0",
     "supertape": "^1.2.3",
