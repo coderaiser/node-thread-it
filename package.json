@@ -52,7 +52,7 @@
     "putout": "^5.5.0",
     "redrun": "^7.0.0",
     "supertape": "^1.2.3",
-    "try-to-catch": "^1.1.1"
+    "try-to-catch": "^3.0.0"
   },
   "engines": {
     "node": ">=8.3"
