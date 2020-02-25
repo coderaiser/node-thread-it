@@ -45,12 +45,11 @@
     "coveralls": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-plugin-node": "^9.1.0",
-    "madrun": "^2.5.0",
+    "madrun": "^5.4.4",
     "mock-require": "^3.0.3",
     "nodemon": "^1.11.0",
     "nyc": "^15.0.0",
     "putout": "^5.5.0",
-    "redrun": "^7.0.0",
     "supertape": "^1.2.3",
     "try-to-catch": "^3.0.0"
   },
