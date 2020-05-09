@@ -7,19 +7,13 @@
   "main": "lib/thread-it.js",
   "nyc": {
     "exclude": [
-      ".madrun.js",
+      "madrun.js",
       "test"
     ]
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/node-thread-it.git"
-  },
-  "nyc": {
-    "exclude": [
-      "madrun.js",
-      "test"
-    ]
   },
   "keywords": [
     "worker",
@@ -49,7 +43,7 @@
   "devDependencies": {
     "@cloudcmd/stub": "^2.3.1",
     "coveralls": "^3.0.2",
-    "eslint": "^6.1.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-putout": "^3.2.1",
     "madrun": "^5.4.4",
