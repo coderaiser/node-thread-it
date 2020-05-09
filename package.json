@@ -5,6 +5,12 @@
   "description": "wrap any sync module to thread worker",
   "homepage": "http://github.com/coderaiser/node-thread-it",
   "main": "lib/thread-it.js",
+  "nyc": {
+    "exclude": [
+      ".madrun.js",
+      "test"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/node-thread-it.git"
