@@ -32,7 +32,7 @@ test('thread-it: error', async (t) => {
     t.end();
 });
 
-test('thread-it: memory leak', async (t) => {
+test('thread-it: memory leak', (t) => {
     threadIt.init();
     const [e] = tryCatch(threadIt.init);
     threadIt.terminate();
