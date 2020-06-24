@@ -42,8 +42,14 @@ test('thread-it: memory leak', (t) => {
 });
 
 test('thread-it', async (t) => {
+    const {THREAD_IT_COUNT} = process.env;
+    process.env.THREAD_IT_COUNT = 2;
+    
+    const threadIt = reRequire('..');
     const putout = threadIt('putout');
     const [e] = await tryToCatch(putout, `const t = 'hello'`);
+    
+    process.env.THREAD_IT_COUNT = THREAD_IT_COUNT;
     
     t.equal(e.message, `You should init workers first!`);
     t.end();
