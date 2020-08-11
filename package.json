@@ -7,7 +7,7 @@
   "main": "lib/thread-it.js",
   "nyc": {
     "exclude": [
-      "madrun.js",
+      ".*.js",
       "test"
     ]
   },
