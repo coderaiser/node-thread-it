@@ -1,4 +1,4 @@
-# Thread It [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
+# Thread It [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
 Drastically simplified [worker threads](https://nodejs.org/dist/latest-v12.x/docs/api/worker_threads.html), on node `v8` or `v10` without `--experimental-worker` just
 wraps your code with a promise so you don't have to warry about a thing, just use `thread it` and it will use `workers` where can.
@@ -24,6 +24,7 @@ Under the hood `threadId` uses [holdUp](https://github.com/coderaiser/hold-up) s
   - `time`
 
 Also you can set `THREAD_IT_COUNT` env variable to workers count, if `0` it means disabled worker threads.
+
 ```js
 const threadIt = require('thread-it');
 
@@ -35,9 +36,9 @@ const result = await putout(`const t = 'hello'`);
 
 // when you need to override options use
 threadIt('putout', {
-    count: 5,       // default
-    time: 1000,     // default
-    log: () => {},  // default
+    count: 5, // default
+    time: 1000, // default
+    log: () => {}, // default
 });
 
 // terminate workers when no need anymore
@@ -55,14 +56,11 @@ threadIt.terminate();
 
 MIT
 
-[NPMIMGURL]:                https://img.shields.io/npm/v/thread-it.svg?style=flat
-[BuildStatusIMGURL]:        https://travis-ci.com/coderaiser/node-thread-it.svg?branch=master
-[DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/node-thread-it.svg?style=flat
-[LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPMURL]:                   https://npmjs.org/package/thread-it "npm"
-[BuildStatusURL]:           https://travis-ci.com/coderaiser/node-thread-it  "Build Status"
-[DependencyStatusURL]:      https://david-dm.org/coderaiser/node-thread-it "Dependency Status"
-[LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
-
-[CoverageURL]:              https://coveralls.io/github/coderaiser/node-thread-it?branch=master
-[CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/node-thread-it/badge.svg?branch=master&service=github
+[NPMIMGURL]: https://img.shields.io/npm/v/thread-it.svg?style=flat
+[BuildStatusIMGURL]: https://travis-ci.com/coderaiser/node-thread-it.svg?branch=master
+[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[NPMURL]: https://npmjs.org/package/thread-it "npm"
+[BuildStatusURL]: https://travis-ci.com/coderaiser/node-thread-it "Build Status"
+[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
+[CoverageURL]: https://coveralls.io/github/coderaiser/node-thread-it?branch=master
+[CoverageIMGURL]: https://coveralls.io/repos/coderaiser/node-thread-it/badge.svg?branch=master&service=github

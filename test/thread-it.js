@@ -8,7 +8,7 @@ const threadIt = require('..');
 
 const {stopAll, reRequire} = mockRequire;
 
-test('thread-it', async (t) => {
+test('thread-it: happy path', async (t) => {
     threadIt.init();
     
     const putout = threadIt('putout');
@@ -32,16 +32,18 @@ test('thread-it: error', async (t) => {
     t.end();
 });
 
-test('thread-it: memory leak', async (t) => {
+test('thread-it: memory leak', (t) => {
     threadIt.init();
+    
     const [e] = tryCatch(threadIt.init);
+    
     threadIt.terminate();
     
     t.notOk(e, `run init as many times as you wish, if works exists init does nothing`);
     t.end();
 });
 
-test('thread-it', async (t) => {
+test('thread-it: error: init workers', async (t) => {
     const putout = threadIt('putout');
     const [e] = await tryToCatch(putout, `const t = 'hello'`);
     
@@ -49,7 +51,7 @@ test('thread-it', async (t) => {
     t.end();
 });
 
-test('thread-it: no worker_threads', async (t) => {
+test('thread-it: no worker_threads: throws', async (t) => {
     mockRequire('try-catch', (fn, name, ...a) => {
         if (name === 'worker_threads')
             return [Error('xxx')];
@@ -110,6 +112,6 @@ test('thread-it: a couple: correct order', async (t) => {
     threadIt.terminate();
     
     t.deepEqual(result1.code, code);
-    t.deepEqual(result2.code, '');
+    t.equal(result2.code, '');
     t.end();
-});
+}, {checkAssertionsCount: false});

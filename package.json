@@ -1,17 +1,12 @@
 {
   "name": "thread-it",
   "version": "1.1.3",
+  "type": "commonjs",
   "author": "coderaiser <mnemonic.enemy@gmail.com> (https://github.com/coderaiser)",
   "description": "wrap any sync module to thread worker",
   "homepage": "http://github.com/coderaiser/node-thread-it",
   "commitType": "colon",
   "main": "lib/thread-it.js",
-  "nyc": {
-    "exclude": [
-      "madrun.js",
-      "test"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/node-thread-it.git"
@@ -38,10 +33,12 @@
   },
   "dependencies": {
     "@iocmd/wait": "^2.1.0",
+    "try-catch": "^3.0.1",
     "try-to-catch": "^3.0.0"
   },
   "license": "MIT",
   "devDependencies": {
+    "c8": "^7.11.3",
     "coveralls": "^3.0.2",
     "eslint": "^8.17.0",
     "eslint-plugin-node": "^11.0.0",
@@ -49,12 +46,11 @@
     "madrun": "^9.0.4",
     "mock-require": "^3.0.3",
     "nodemon": "^2.0.2",
-    "nyc": "^15.0.0",
     "putout": "^26.14.0",
     "supertape": "^7.4.1"
   },
   "engines": {
-    "node": ">=8.3"
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"
