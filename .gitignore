@@ -6,4 +6,5 @@ legacy
 yarn-error.log
 
 *.swp
+.idea
 
