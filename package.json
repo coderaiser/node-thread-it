@@ -7,19 +7,13 @@
   "main": "lib/thread-it.js",
   "nyc": {
     "exclude": [
-      ".madrun.js",
+      "madrun.js",
       "test"
     ]
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/node-thread-it.git"
-  },
-  "nyc": {
-    "exclude": [
-      "madrun.js",
-      "test"
-    ]
   },
   "keywords": [
     "worker",
@@ -42,8 +36,8 @@
     "watch:coverage": "madrun watch:coverage"
   },
   "dependencies": {
-    "@iocmd/hold-up": "^1.1.0",
-    "try-catch": "^3.0.0"
+    "@iocmd/wait": "^1.0.0",
+    "try-to-catch": "^3.0.0"
   },
   "license": "MIT",
   "devDependencies": {
@@ -56,9 +50,8 @@
     "mock-require": "^3.0.3",
     "nodemon": "^2.0.2",
     "nyc": "^15.0.0",
-    "putout": "^7.13.4",
-    "supertape": "^1.2.3",
-    "try-to-catch": "^3.0.0"
+    "putout": "^26.14.0",
+    "supertape": "^1.2.3"
   },
   "engines": {
     "node": ">=8.3"
