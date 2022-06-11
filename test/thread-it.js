@@ -1,12 +1,19 @@
 'use strict';
 
-const test = require('supertape');
+const {EventEmitter} = require('events');
+
+const {
+    test,
+    stub,
+} = require('supertape');
 const tryToCatch = require('try-to-catch');
 const tryCatch = require('try-catch');
 const mockRequire = require('mock-require');
+const wait = require('@iocmd/wait');
 const threadIt = require('..');
 
 const {stopAll, reRequire} = mockRequire;
+const {assign} = Object;
 
 test('thread-it: happy path', async (t) => {
     threadIt.init();
@@ -17,6 +24,30 @@ test('thread-it: happy path', async (t) => {
     threadIt.terminate();
     
     t.deepEqual(result.places, []);
+    t.end();
+});
+
+test('thread-it: run: no free worker', async (t) => {
+    const worker = assign(new EventEmitter(), {
+        postMessage: stub(),
+    });
+    
+    const workers = [worker];
+    
+    workers._threadIt = new EventEmitter();
+    
+    const name = 'abc';
+    const args = [];
+    
+    const emitThreadIt = workers._threadIt.emit.bind(workers._threadIt);
+    const emitWorker = worker.emit.bind(worker);
+    const [result] = await Promise.all([
+        threadIt._run({name, args, workers}),
+        emitThreadIt('free-worker', worker),
+        wait(500, emitWorker.bind(null, 'message', [null, 'hello'])),
+    ]);
+    
+    t.equal(result, 'hello');
     t.end();
 });
 
