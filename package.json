@@ -36,7 +36,7 @@
     "watch:coverage": "madrun watch:coverage"
   },
   "dependencies": {
-    "@iocmd/wait": "^1.0.0",
+    "@iocmd/wait": "^2.1.0",
     "try-to-catch": "^3.0.0"
   },
   "license": "MIT",
