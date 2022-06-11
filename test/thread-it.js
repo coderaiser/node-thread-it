@@ -1,14 +1,21 @@
 'use strict';
 
-const test = require('supertape');
+const {EventEmitter} = require('events');
+
+const {
+    test,
+    stub,
+} = require('supertape');
 const tryToCatch = require('try-to-catch');
 const tryCatch = require('try-catch');
 const mockRequire = require('mock-require');
+const wait = require('@iocmd/wait');
 const threadIt = require('..');
 
 const {stopAll, reRequire} = mockRequire;
+const {assign} = Object;
 
-test('thread-it', async (t) => {
+test('thread-it: happy path', async (t) => {
     threadIt.init();
     
     const putout = threadIt('putout');
@@ -17,6 +24,30 @@ test('thread-it', async (t) => {
     threadIt.terminate();
     
     t.deepEqual(result.places, []);
+    t.end();
+});
+
+test('thread-it: run: no free worker', async (t) => {
+    const worker = assign(new EventEmitter(), {
+        postMessage: stub(),
+    });
+    
+    const workers = [worker];
+    
+    workers._threadIt = new EventEmitter();
+    
+    const name = 'abc';
+    const args = [];
+    
+    const emitThreadIt = workers._threadIt.emit.bind(workers._threadIt);
+    const emitWorker = worker.emit.bind(worker);
+    const [result] = await Promise.all([
+        threadIt._run({name, args, workers}),
+        emitThreadIt('free-worker', worker),
+        wait(500, emitWorker.bind(null, 'message', [null, 'hello'])),
+    ]);
+    
+    t.equal(result, 'hello');
     t.end();
 });
 
@@ -34,14 +65,16 @@ test('thread-it: error', async (t) => {
 
 test('thread-it: memory leak', (t) => {
     threadIt.init();
+    
     const [e] = tryCatch(threadIt.init);
+    
     threadIt.terminate();
     
     t.notOk(e, `run init as many times as you wish, if works exists init does nothing`);
     t.end();
 });
 
-test('thread-it', async (t) => {
+test('thread-it: env', async (t) => {
     const {THREAD_IT_COUNT} = process.env;
     process.env.THREAD_IT_COUNT = 2;
     
@@ -55,7 +88,7 @@ test('thread-it', async (t) => {
     t.end();
 });
 
-test('thread-it: no worker_threads', async (t) => {
+test('thread-it: no worker_threads: throws', async (t) => {
     mockRequire('try-catch', (fn, name, ...a) => {
         if (name === 'worker_threads')
             return [Error('xxx')];
@@ -116,6 +149,6 @@ test('thread-it: a couple: correct order', async (t) => {
     threadIt.terminate();
     
     t.deepEqual(result1.code, code);
-    t.deepEqual(result2.code, '');
+    t.equal(result2.code, '');
     t.end();
-});
+}, {checkAssertionsCount: false});

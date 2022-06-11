@@ -4,5 +4,6 @@ yarn-error.log
 
 *.swp
 
-madrun.js
+.madrun.js
+coverage
 
