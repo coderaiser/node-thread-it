@@ -16,4 +16,3 @@ module.exports = {
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
     'watch:coverage': () => 'bin/redrun.js watch:coverage:base',
 };
-

@@ -1,11 +1,9 @@
 'use strict';
 
-const {EventEmitter} = require('events');
+const {EventEmitter} = require('node:events');
+const process = require('node:process');
+const {test, stub} = require('supertape');
 
-const {
-    test,
-    stub,
-} = require('supertape');
 const tryToCatch = require('try-to-catch');
 const tryCatch = require('try-catch');
 const mockRequire = require('mock-require');
@@ -41,8 +39,13 @@ test('thread-it: run: no free worker', async (t) => {
     
     const emitThreadIt = workers._threadIt.emit.bind(workers._threadIt);
     const emitWorker = worker.emit.bind(worker);
+    
     const [result] = await Promise.all([
-        threadIt._run({name, args, workers}),
+        threadIt._run({
+            name,
+            args,
+            workers,
+        }),
         emitThreadIt('free-worker', worker),
         wait(500, emitWorker.bind(null, 'message', [null, 'hello'])),
     ]);
@@ -76,6 +79,7 @@ test('thread-it: memory leak', (t) => {
 
 test('thread-it: env', async (t) => {
     const {THREAD_IT_COUNT} = process.env;
+    
     process.env.THREAD_IT_COUNT = 2;
     
     const threadIt = reRequire('..');
@@ -91,7 +95,9 @@ test('thread-it: env', async (t) => {
 test('thread-it: no worker_threads: throws', async (t) => {
     mockRequire('try-catch', (fn, name, ...a) => {
         if (name === 'worker_threads')
-            return [Error('xxx')];
+            return [
+                Error('xxx'),
+            ];
         
         return tryCatch(fn, name, ...a);
     });
@@ -132,7 +138,7 @@ test('thread-it: a couple: correct order', async (t) => {
     const putout1 = threadIt('putout');
     const putout2 = threadIt('putout');
     
-    const code = 'const t = 5';
+    const code = 'const t = 5;\n';
     await Promise.all([
         putout1(code),
         putout1(code),
@@ -140,6 +146,7 @@ test('thread-it: a couple: correct order', async (t) => {
     ]);
     
     const result1 = await putout1(code);
+    
     const result2 = await putout2(code, {
         plugins: [
             'remove-unused-variables',
@@ -148,7 +155,9 @@ test('thread-it: a couple: correct order', async (t) => {
     
     threadIt.terminate();
     
-    t.deepEqual(result1.code, code);
-    t.equal(result2.code, '');
+    t.equal(result1.code, code);
+    t.equal(result2.code, '\n');
     t.end();
-}, {checkAssertionsCount: false});
+}, {
+    checkAssertionsCount: false,
+});
