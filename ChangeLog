@@ -1,3 +1,15 @@
+2025.04.24, v3.0.0
+
+feature:
+- f0406bc thread-it: eslint-plugin-n v17.17.0
+- 11b8475 thread-it: supertape v11.1.0
+- 669754a thread-it: putout v40.0.12
+- 10f3147 thread-it: nodemon v3.1.10
+- 347eb7b thread-it: madrun v11.0.1
+- f251f12 thread-it: eslint-plugin-putout v26.1.0
+- cd5ab05 thread-it: eslint v9.25.1
+- c3e78a1 thread-it: c8 v10.1.3
+
 2022.06.12, v2.0.0
 
 feature:
